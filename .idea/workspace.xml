@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bcadd2d2-59f1-4900-a81a-65389719b74a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/controller/ProjectHandleController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/dao/ProjectInfoDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/dao/UserInfoMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/pojo/ProjectInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/pojo/UserInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/pojo/response/AppResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/service/ProjectHandleService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/service/UserService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/service/impl/ProjectHandleServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/service/impl/UserServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/service/impl/WeChatLoginImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/utils/DateUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/utils/GenerateIdsUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/utils/HttpClientUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ken/app/utils/OpenidUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ProjectInfoMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserInfoMapper.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/ken/app/service/WeChatLoginImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/ken/app/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/ken/app/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ken/app/service/WeChatLoginImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/ken/app/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/ken/app/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/ken/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/ken/pom.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ken/app/Starter.class" afterPath="$PROJECT_DIR$/target/classes/ken/app/Starter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ken/app/controller/Login.class" afterPath="$PROJECT_DIR$/target/classes/ken/app/controller/Login.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ken/app/pojo/Status.class" afterPath="$PROJECT_DIR$/target/classes/ken/app/pojo/Status.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ken/app/service/WeChatLogin.class" afterPath="$PROJECT_DIR$/target/classes/ken/app/service/WeChatLogin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ken/app/utils/AesCbcUtil.class" afterPath="$PROJECT_DIR$/target/classes/ken/app/utils/AesCbcUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ken/app/utils/UrlRequest.class" afterPath="$PROJECT_DIR$/target/classes/ken/app/utils/UrlRequest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ken/app/Starter.java" afterPath="$PROJECT_DIR$/src/main/java/ken/app/Starter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ken/app/controller/Login.java" afterPath="$PROJECT_DIR$/src/main/java/ken/app/controller/Login.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ken/app/service/WeChatLogin.java" afterPath="$PROJECT_DIR$/src/main/java/ken/app/service/WeChatLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -722,12 +684,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572879441748</updated>
-      <workItem from="1572879443829" duration="20396000" />
+      <workItem from="1572879443829" duration="20873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20396000" />
+    <option name="totallyTimeSpent" value="20873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="14" y="74" width="1936" height="1056" extended-state="0" />
