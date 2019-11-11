@@ -1,11 +1,17 @@
 package ken.app;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-//springboot框架的核心注解
+@MapperScan(basePackages= {"ken.app.dao"}) //要扫描mapper类包的路径
+@ComponentScan(basePackages ={"ken.app"})
 @SpringBootApplication
+@EnableTransactionManagement
 public class Starter {
 	
 	public static void main(String[] args) {

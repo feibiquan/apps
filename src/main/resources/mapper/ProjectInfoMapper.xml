@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ken.app.dao.ProjectInfoDao" >
+  <resultMap id="BaseResultMap" type="ken.app.pojo.ProjectInfo" >
+    <id column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="conpany_name" property="conpanyName" jdbcType="VARCHAR" />
+    <result column="fr_area" property="frArea" jdbcType="VARCHAR" />
+    <result column="is_yard_in" property="isYardIn" jdbcType="VARCHAR" />
+    <result column="yard_detail" property="yardDetail" jdbcType="VARCHAR" />
+    <result column="gas_type" property="gasType" jdbcType="VARCHAR" />
+    <result column="other_gas_detail" property="otherGasDetail" jdbcType="VARCHAR" />
+    <result column="future_PNG_access" property="futurePngAccess" jdbcType="VARCHAR" />
+    <result column="future_PNG_detail" property="futurePngDetail" jdbcType="VARCHAR" />
+    <result column="total_assets" property="totalAssets" jdbcType="VARCHAR" />
+    <result column="avenue" property="avenue" jdbcType="VARCHAR" />
+    <result column="net_profit" property="netProfit" jdbcType="VARCHAR" />
+    <result column="transfer_ratio" property="transferRatio" jdbcType="VARCHAR" />
+    <result column="is_channel" property="isChannel" jdbcType="VARCHAR" />
+    <result column="channel_model" property="channelModel" jdbcType="VARCHAR" />
+    <result column="channel_divition_ratio" property="channelDivitionRatio" jdbcType="VARCHAR" />
+    <result column="channel_model_other" property="channelModelOther" jdbcType="VARCHAR" />
+    <result column="fee_model" property="feeModel" jdbcType="VARCHAR" />
+    <result column="fee_ratio" property="feeRatio" jdbcType="VARCHAR" />
+    <result column="fee_model_other" property="feeModelOther" jdbcType="VARCHAR" />
+    <result column="pipe_laying_detail" property="pipeLayingDetail" jdbcType="VARCHAR" />
+    <result column="net_assets" property="netAssets" jdbcType="VARCHAR" />
+    <result column="off_season_suply" property="offSeasonSuply" jdbcType="VARCHAR" />
+    <result column="winter_suply" property="winterSuply" jdbcType="VARCHAR" />
+    <result column="full_suply" property="fullSuply" jdbcType="VARCHAR" />
+    <result column="assessments" property="assessments" jdbcType="VARCHAR" />
+    <result column="ownership_structure" property="ownershipStructure" jdbcType="VARCHAR" />
+    <result column="appeal" property="appeal" jdbcType="VARCHAR" />
+    <result column="bright_spot" property="brightSpot" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="project_type" property="projectType" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="project_status" property="projectStatus" jdbcType="VARCHAR" />
+    <result column="project_id_join" property="projectIdJoin" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_id, conpany_name, fr_area, is_yard_in, yard_detail, gas_type, other_gas_detail, 
+    future_PNG_access, future_PNG_detail, total_assets, avenue, net_profit, transfer_ratio, 
+    is_channel, channel_model, channel_divition_ratio, channel_model_other, fee_model, 
+    fee_ratio, fee_model_other, pipe_laying_detail, net_assets, off_season_suply, winter_suply, 
+    full_suply, assessments, ownership_structure, appeal, bright_spot, remark, project_type, 
+    user_id, project_status, project_id_join, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_project_info_real
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </select>
+
+
+
+  <select id="queryProjectList" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List" />
+    from t_project_info_real
+    WHERE 1=1
+    <include refid="projectSelect"/>
+  </select>
+
+  <sql id="projectSelect">
+    <if test="userId != null" >
+     AND  user_id=#{userId,jdbcType=VARCHAR},
+    </if>
+    <if test="projectId != null" >
+      AND  project_id=#{projectId,jdbcType=INTEGER},
+    </if>
+    <if test="projectStatus != null" >
+      AND  project_status=#{projectStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="createTimeS != null" >
+      <![CDATA[
+		and createTime >= #{createTimeS,jdbcType=VARCHAR}
+	   ]]>
+    </if>
+    <if test="createTimeE != null" >
+      <![CDATA[
+		and createTime <= #{createTimeE,jdbcType=VARCHAR}
+	   ]]>
+    </if>
+  </sql>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_project_info_real
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="ken.app.pojo.ProjectInfo" >
+    insert into t_project_info_real (project_id, conpany_name, fr_area, 
+      is_yard_in, yard_detail, gas_type, 
+      other_gas_detail, future_PNG_access, future_PNG_detail, 
+      total_assets, avenue, net_profit, 
+      transfer_ratio, is_channel, channel_model, 
+      channel_divition_ratio, channel_model_other, 
+      fee_model, fee_ratio, fee_model_other, 
+      pipe_laying_detail, net_assets, off_season_suply, 
+      winter_suply, full_suply, assessments, 
+      ownership_structure, appeal, bright_spot, 
+      remark, project_type, user_id, 
+      project_status, project_id_join, create_time, 
+      update_time)
+    values (#{projectId,jdbcType=INTEGER}, #{conpanyName,jdbcType=VARCHAR}, #{frArea,jdbcType=VARCHAR}, 
+      #{isYardIn,jdbcType=VARCHAR}, #{yardDetail,jdbcType=VARCHAR}, #{gasType,jdbcType=VARCHAR}, 
+      #{otherGasDetail,jdbcType=VARCHAR}, #{futurePngAccess,jdbcType=VARCHAR}, #{futurePngDetail,jdbcType=VARCHAR}, 
+      #{totalAssets,jdbcType=VARCHAR}, #{avenue,jdbcType=VARCHAR}, #{netProfit,jdbcType=VARCHAR}, 
+      #{transferRatio,jdbcType=VARCHAR}, #{isChannel,jdbcType=VARCHAR}, #{channelModel,jdbcType=VARCHAR}, 
+      #{channelDivitionRatio,jdbcType=VARCHAR}, #{channelModelOther,jdbcType=VARCHAR}, 
+      #{feeModel,jdbcType=VARCHAR}, #{feeRatio,jdbcType=VARCHAR}, #{feeModelOther,jdbcType=VARCHAR}, 
+      #{pipeLayingDetail,jdbcType=VARCHAR}, #{netAssets,jdbcType=VARCHAR}, #{offSeasonSuply,jdbcType=VARCHAR}, 
+      #{winterSuply,jdbcType=VARCHAR}, #{fullSuply,jdbcType=VARCHAR}, #{assessments,jdbcType=VARCHAR}, 
+      #{ownershipStructure,jdbcType=VARCHAR}, #{appeal,jdbcType=VARCHAR}, #{brightSpot,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{projectType,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{projectStatus,jdbcType=VARCHAR}, #{projectIdJoin,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="ken.app.pojo.ProjectInfo" >
+    insert into t_project_info_real
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="conpanyName != null" >
+        conpany_name,
+      </if>
+      <if test="frArea != null" >
+        fr_area,
+      </if>
+      <if test="isYardIn != null" >
+        is_yard_in,
+      </if>
+      <if test="yardDetail != null" >
+        yard_detail,
+      </if>
+      <if test="gasType != null" >
+        gas_type,
+      </if>
+      <if test="otherGasDetail != null" >
+        other_gas_detail,
+      </if>
+      <if test="futurePngAccess != null" >
+        future_PNG_access,
+      </if>
+      <if test="futurePngDetail != null" >
+        future_PNG_detail,
+      </if>
+      <if test="totalAssets != null" >
+        total_assets,
+      </if>
+      <if test="avenue != null" >
+        avenue,
+      </if>
+      <if test="netProfit != null" >
+        net_profit,
+      </if>
+      <if test="transferRatio != null" >
+        transfer_ratio,
+      </if>
+      <if test="isChannel != null" >
+        is_channel,
+      </if>
+      <if test="channelModel != null" >
+        channel_model,
+      </if>
+      <if test="channelDivitionRatio != null" >
+        channel_divition_ratio,
+      </if>
+      <if test="channelModelOther != null" >
+        channel_model_other,
+      </if>
+      <if test="feeModel != null" >
+        fee_model,
+      </if>
+      <if test="feeRatio != null" >
+        fee_ratio,
+      </if>
+      <if test="feeModelOther != null" >
+        fee_model_other,
+      </if>
+      <if test="pipeLayingDetail != null" >
+        pipe_laying_detail,
+      </if>
+      <if test="netAssets != null" >
+        net_assets,
+      </if>
+      <if test="offSeasonSuply != null" >
+        off_season_suply,
+      </if>
+      <if test="winterSuply != null" >
+        winter_suply,
+      </if>
+      <if test="fullSuply != null" >
+        full_suply,
+      </if>
+      <if test="assessments != null" >
+        assessments,
+      </if>
+      <if test="ownershipStructure != null" >
+        ownership_structure,
+      </if>
+      <if test="appeal != null" >
+        appeal,
+      </if>
+      <if test="brightSpot != null" >
+        bright_spot,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="projectType != null" >
+        project_type,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="projectStatus != null" >
+        project_status,
+      </if>
+      <if test="projectIdJoin != null" >
+        project_id_join,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="conpanyName != null" >
+        #{conpanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="frArea != null" >
+        #{frArea,jdbcType=VARCHAR},
+      </if>
+      <if test="isYardIn != null" >
+        #{isYardIn,jdbcType=VARCHAR},
+      </if>
+      <if test="yardDetail != null" >
+        #{yardDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gasType != null" >
+        #{gasType,jdbcType=VARCHAR},
+      </if>
+      <if test="otherGasDetail != null" >
+        #{otherGasDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="futurePngAccess != null" >
+        #{futurePngAccess,jdbcType=VARCHAR},
+      </if>
+      <if test="futurePngDetail != null" >
+        #{futurePngDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="totalAssets != null" >
+        #{totalAssets,jdbcType=VARCHAR},
+      </if>
+      <if test="avenue != null" >
+        #{avenue,jdbcType=VARCHAR},
+      </if>
+      <if test="netProfit != null" >
+        #{netProfit,jdbcType=VARCHAR},
+      </if>
+      <if test="transferRatio != null" >
+        #{transferRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="isChannel != null" >
+        #{isChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="channelModel != null" >
+        #{channelModel,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDivitionRatio != null" >
+        #{channelDivitionRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="channelModelOther != null" >
+        #{channelModelOther,jdbcType=VARCHAR},
+      </if>
+      <if test="feeModel != null" >
+        #{feeModel,jdbcType=VARCHAR},
+      </if>
+      <if test="feeRatio != null" >
+        #{feeRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="feeModelOther != null" >
+        #{feeModelOther,jdbcType=VARCHAR},
+      </if>
+      <if test="pipeLayingDetail != null" >
+        #{pipeLayingDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="netAssets != null" >
+        #{netAssets,jdbcType=VARCHAR},
+      </if>
+      <if test="offSeasonSuply != null" >
+        #{offSeasonSuply,jdbcType=VARCHAR},
+      </if>
+      <if test="winterSuply != null" >
+        #{winterSuply,jdbcType=VARCHAR},
+      </if>
+      <if test="fullSuply != null" >
+        #{fullSuply,jdbcType=VARCHAR},
+      </if>
+      <if test="assessments != null" >
+        #{assessments,jdbcType=VARCHAR},
+      </if>
+      <if test="ownershipStructure != null" >
+        #{ownershipStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="appeal != null" >
+        #{appeal,jdbcType=VARCHAR},
+      </if>
+      <if test="brightSpot != null" >
+        #{brightSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null" >
+        #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        #{projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="projectIdJoin != null" >
+        #{projectIdJoin,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ken.app.pojo.ProjectInfo" >
+    update t_project_info_real
+    <set >
+      <if test="conpanyName != null" >
+        conpany_name = #{conpanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="frArea != null" >
+        fr_area = #{frArea,jdbcType=VARCHAR},
+      </if>
+      <if test="isYardIn != null" >
+        is_yard_in = #{isYardIn,jdbcType=VARCHAR},
+      </if>
+      <if test="yardDetail != null" >
+        yard_detail = #{yardDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="gasType != null" >
+        gas_type = #{gasType,jdbcType=VARCHAR},
+      </if>
+      <if test="otherGasDetail != null" >
+        other_gas_detail = #{otherGasDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="futurePngAccess != null" >
+        future_PNG_access = #{futurePngAccess,jdbcType=VARCHAR},
+      </if>
+      <if test="futurePngDetail != null" >
+        future_PNG_detail = #{futurePngDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="totalAssets != null" >
+        total_assets = #{totalAssets,jdbcType=VARCHAR},
+      </if>
+      <if test="avenue != null" >
+        avenue = #{avenue,jdbcType=VARCHAR},
+      </if>
+      <if test="netProfit != null" >
+        net_profit = #{netProfit,jdbcType=VARCHAR},
+      </if>
+      <if test="transferRatio != null" >
+        transfer_ratio = #{transferRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="isChannel != null" >
+        is_channel = #{isChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="channelModel != null" >
+        channel_model = #{channelModel,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDivitionRatio != null" >
+        channel_divition_ratio = #{channelDivitionRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="channelModelOther != null" >
+        channel_model_other = #{channelModelOther,jdbcType=VARCHAR},
+      </if>
+      <if test="feeModel != null" >
+        fee_model = #{feeModel,jdbcType=VARCHAR},
+      </if>
+      <if test="feeRatio != null" >
+        fee_ratio = #{feeRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="feeModelOther != null" >
+        fee_model_other = #{feeModelOther,jdbcType=VARCHAR},
+      </if>
+      <if test="pipeLayingDetail != null" >
+        pipe_laying_detail = #{pipeLayingDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="netAssets != null" >
+        net_assets = #{netAssets,jdbcType=VARCHAR},
+      </if>
+      <if test="offSeasonSuply != null" >
+        off_season_suply = #{offSeasonSuply,jdbcType=VARCHAR},
+      </if>
+      <if test="winterSuply != null" >
+        winter_suply = #{winterSuply,jdbcType=VARCHAR},
+      </if>
+      <if test="fullSuply != null" >
+        full_suply = #{fullSuply,jdbcType=VARCHAR},
+      </if>
+      <if test="assessments != null" >
+        assessments = #{assessments,jdbcType=VARCHAR},
+      </if>
+      <if test="ownershipStructure != null" >
+        ownership_structure = #{ownershipStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="appeal != null" >
+        appeal = #{appeal,jdbcType=VARCHAR},
+      </if>
+      <if test="brightSpot != null" >
+        bright_spot = #{brightSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="projectType != null" >
+        project_type = #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        project_status = #{projectStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="projectIdJoin != null" >
+        project_id_join = #{projectIdJoin,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ken.app.pojo.ProjectInfo" >
+    update t_project_info_real
+    set conpany_name = #{conpanyName,jdbcType=VARCHAR},
+      fr_area = #{frArea,jdbcType=VARCHAR},
+      is_yard_in = #{isYardIn,jdbcType=VARCHAR},
+      yard_detail = #{yardDetail,jdbcType=VARCHAR},
+      gas_type = #{gasType,jdbcType=VARCHAR},
+      other_gas_detail = #{otherGasDetail,jdbcType=VARCHAR},
+      future_PNG_access = #{futurePngAccess,jdbcType=VARCHAR},
+      future_PNG_detail = #{futurePngDetail,jdbcType=VARCHAR},
+      total_assets = #{totalAssets,jdbcType=VARCHAR},
+      avenue = #{avenue,jdbcType=VARCHAR},
+      net_profit = #{netProfit,jdbcType=VARCHAR},
+      transfer_ratio = #{transferRatio,jdbcType=VARCHAR},
+      is_channel = #{isChannel,jdbcType=VARCHAR},
+      channel_model = #{channelModel,jdbcType=VARCHAR},
+      channel_divition_ratio = #{channelDivitionRatio,jdbcType=VARCHAR},
+      channel_model_other = #{channelModelOther,jdbcType=VARCHAR},
+      fee_model = #{feeModel,jdbcType=VARCHAR},
+      fee_ratio = #{feeRatio,jdbcType=VARCHAR},
+      fee_model_other = #{feeModelOther,jdbcType=VARCHAR},
+      pipe_laying_detail = #{pipeLayingDetail,jdbcType=VARCHAR},
+      net_assets = #{netAssets,jdbcType=VARCHAR},
+      off_season_suply = #{offSeasonSuply,jdbcType=VARCHAR},
+      winter_suply = #{winterSuply,jdbcType=VARCHAR},
+      full_suply = #{fullSuply,jdbcType=VARCHAR},
+      assessments = #{assessments,jdbcType=VARCHAR},
+      ownership_structure = #{ownershipStructure,jdbcType=VARCHAR},
+      appeal = #{appeal,jdbcType=VARCHAR},
+      bright_spot = #{brightSpot,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      project_type = #{projectType,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      project_status = #{projectStatus,jdbcType=VARCHAR},
+      project_id_join = #{projectIdJoin,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where project_id = #{projectId,jdbcType=INTEGER}
+  </update>
+</mapper>
